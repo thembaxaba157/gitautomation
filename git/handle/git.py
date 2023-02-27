@@ -1,6 +1,5 @@
 import os
 import json
-import pyfiglet
 import time
 import getpass
 
@@ -162,26 +161,7 @@ def get_git():
     else:
         return gitlab
 
-def proccess_command(argument):
-    global change,state
-    run_argument(argument)
 
-    if change == True:
-        git = get_git()
-        config_info = {}
-        with open(os.path.expanduser('~/gitz/.config.json'),'r') as config_file:
-            config_info = json.load(config_file)
-            config_info['state'] = state
-            config_info['configured_user'] = git['name']
-            config_info['configured_email'] = git['email']
-        with open(os.path.expanduser('~/gitz/.config.json'),'w') as config_file:
-            json.dump(config_info,config_file)
-        os.system(f"git config --global user.name {git['name']}")
-        os.system(f"git config --global user.email {git['email']}")
-        os.system(f'clear')
-        state_print = pyfiglet.figlet_format(f"Git{state[3:].capitalize()}")
-        print(state_print)
-        print(f'Successfully switched to {state[:3].capitalize()}{state[3:].capitalize()}')
 def get_git_type():
     git = ''
     print('Choose Git to use:\n • H or Hub for GitHub\n • L or Lab for GitLab')
@@ -192,12 +172,7 @@ def get_git_type():
     else:
         return 'GitLab'
 
-def run_argument(argument):
-    arguments = ['switch','reconfig']
-    if argument.lower() == 'switch' or argument.lower() == 's':
-        switch()
-    elif 'reconfig' in argument.lower() or 'rc' in argument.lower():
-        reconfig(get_git_type())
+
 
 def reconfig(git_type):
     config_git(git_type)

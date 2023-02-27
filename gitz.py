@@ -2,7 +2,7 @@ import os
 import sys
 import pyfiglet
 import git.handle.git as user_git
-
+import command_lines.arguments.args as arg
 
 if __name__=="__main__":
     user_git.load_config()
@@ -18,7 +18,7 @@ if __name__=="__main__":
         user_git.gitz_init()
     
     elif len(sys.argv)>1:
-        user_git.proccess_command(sys.argv[1])
+        arg.proccess_command(sys.argv[1])
     
     else:
         print(f"You're currently using Git{user_git.state[3:].capitalize()}")
