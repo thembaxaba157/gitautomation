@@ -1,6 +1,5 @@
 import os
 import json
-import sys
 import pyfiglet
 import time
 import getpass
