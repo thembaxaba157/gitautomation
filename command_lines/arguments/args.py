@@ -14,7 +14,7 @@ def run_argument(argument):
 
 def proccess_command(argument):
     run_argument(argument)
-
+    print(ugit.change)
     if ugit.change == True:
         git = ugit.get_git()
         config_info = {}

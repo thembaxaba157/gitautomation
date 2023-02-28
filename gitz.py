@@ -22,3 +22,4 @@ if __name__=="__main__":
     
     else:
         print(f"You're currently using Git{user_git.state[3:].capitalize()}")
+        

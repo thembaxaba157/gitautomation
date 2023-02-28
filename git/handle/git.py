@@ -111,6 +111,9 @@ def config_data(info):
     config_info['state'] = git
     config_info['configured_user'] = info[git]['name']
     config_info['configured_email'] = info[git]['email']
+    os.system(f"git config --global user.name {info[git]['name']}")
+    os.system(f"git config --global user.email {info[git]['email']}")
+
     with open(os.path.expanduser('~/gitz/.config.json'),'w') as config_file:
         json.dump(config_info,config_file)
 
@@ -135,8 +138,10 @@ def switch():
             config_git('GitLab')
         else:return 
     
-    if state == 'gitlab': state = 'github'
-    else:                 state = 'gitlab'
+    if state == 'gitlab':
+        state = 'github'
+    else:             
+        state = 'gitlab'
     change = True
 
 def load_config():
