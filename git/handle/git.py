@@ -162,9 +162,9 @@ def load_config():
 def get_git():
     global state
     if state == 'gitlab':
-        return github
-    else:
         return gitlab
+    else:
+        return github
 
 
 def get_git_type():
